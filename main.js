@@ -36,7 +36,19 @@ $(document).ready(function() {
         // });
 
         fetch(endpoint).then(function(resposta) {
-            console.log(resposta);
+            return resposta.json()
         })
-    });
-});
+            .then(function(json) {
+                const logradouro = json.logradouro;
+                const bairro = json.bairro;
+                const cidade = json.localidade;
+                const estado = json.uf;
+                const endereco = `${logradouro}, ${bairro}, ${cidade} - ${estado}`;
+                $('#endereco').val(endereco);
+        })
+            setTimeout(function() {
+                $(botao).find('i').removeClass('d-none');
+                $(botao).find('span').addClass('d-none');
+            }, 2000);
+    })
+})
