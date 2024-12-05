@@ -56,4 +56,11 @@ $(document).ready(function() {
             }, 1000);
         });
     })
+
+    $('#formulario-pedido').submit(function(event) {
+        evento.preventDefault();
+        if ($('#nome').val().length == 0) {
+            throw new Error('O campo Nome é obrigatório');
+        }
+    })
 })
